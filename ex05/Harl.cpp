@@ -6,7 +6,7 @@
 /*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 15:01:03 by imontero          #+#    #+#             */
-/*   Updated: 2023/12/10 15:11:28 by imontero         ###   ########.fr       */
+/*   Updated: 2023/12/10 22:36:01 by imontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,22 @@ Harl::Harl(void)
 Harl::~Harl(void)
 {
 }
-
+/*
+	uses switch case to call the appropriate function
+*/
 void	Harl::complain(std::string level)
 {
-	
+	std::string	lvl[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	void		(Harl::*ptrComplain[4])(void) = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (level == lvl[i])
+		{
+			(this->*ptrComplain[i])();
+			return ;
+		}
+	}
 }
 
 void	Harl::_debug(void)
@@ -32,10 +44,16 @@ void	Harl::_debug(void)
 
 void	Harl::_info(void)
 {
-	std::cout << "Info messages contain information about the progress of the application at coarse-grained level" << std::endl;
+	std::cout << "These messages contain extensive information. They are helpful for tracing program execution in a production environment." << std::endl;
 }
 
 void	Harl::_warning(void)
 {
-	std::cout << "Warning messages are used to indicate that something unexpected happened, but the application will continue to run" << std::endl;
+	std::cout << "Warning messages indicate a potential issue in the system. However, it can be handled or ignored." << std::endl;
 }
+
+void	Harl::_error(void)
+{
+	std::cout << "Error messages indicate an unrecoverable error has occurred. This is usually a critical issue that requires manual intervention." << std::endl;
+}
+
