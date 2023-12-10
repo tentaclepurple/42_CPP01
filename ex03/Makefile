@@ -4,11 +4,12 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -g3 -fsanitize=address
 
 CC = c++
 
-INCLUDE = 	Zombie.hpp
+#INCLUDE = 	Weapon.hpp
 
 SRC_FILES = main.cpp \
-			Zombie.cpp \
-			zombieHorde.cpp
+			Weapon.cpp \
+			HumanA.cpp \
+			HumanB.cpp
 		
 OBJS = $(SRC_FILES:.cpp=.o)
 
@@ -62,7 +63,7 @@ export	ART
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(INCLUDE)
+$(NAME): $(OBJS) #$(INCLUDE)
 	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 	@echo "$$ART"
 
