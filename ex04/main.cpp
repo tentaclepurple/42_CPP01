@@ -6,7 +6,7 @@
 /*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 08:37:03 by imontero          #+#    #+#             */
-/*   Updated: 2023/12/10 10:51:31 by imontero         ###   ########.fr       */
+/*   Updated: 2023/12/11 22:37:02 by imontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	findReplaceWrite(std::string infile, const std::string txt, const std::strin
 
 	if (!outfile.is_open())
 		return (std::cerr << "Unexpected outfile" << std::endl, 1);
+	/* if (!s1.length())
+		return (0);  */
 	for (size_t i = 0; i < txt.length(); i++)
 	{
 		pos = txt.find(s1, i);
