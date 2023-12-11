@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/10 22:38:21 by imontero          #+#    #+#             */
-/*   Updated: 2023/12/11 18:42:33 by imontero         ###   ########.fr       */
+/*   Created: 2023/12/10 15:01:08 by imontero          #+#    #+#             */
+/*   Updated: 2023/12/10 15:06:32 by imontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-//Chose between "DEBUG", "INFO", "WARNING", "ERROR"
-int	main(void)
+# include <iostream>
+
+class Harl
 {
-	Harl	inst;
+	private:
+		void _debug(void);
+		void _info(void);
+		void _warning(void);
+		void _error(void);
+	
+	public:
+		Harl(void);
+		~Harl(void);
+		void complain(std::string level);
+};
 
-	inst.complain("DEBUG");
-	inst.complain("INFO");
-	inst.complain("WARNING");
-	inst.complain("ERROR");
-	inst.complain("POTXOLO");
-	return (0);
-}
+#endif

@@ -6,21 +6,21 @@
 /*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 22:38:21 by imontero          #+#    #+#             */
-/*   Updated: 2023/12/11 18:42:33 by imontero         ###   ########.fr       */
+/*   Updated: 2023/12/11 18:43:06 by imontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-//Chose between "DEBUG", "INFO", "WARNING", "ERROR"
-int	main(void)
+int	main(int argc, char **argv)
 {
-	Harl	inst;
+	if (argc == 2)
+	{
+		Harl	harl;
 
-	inst.complain("DEBUG");
-	inst.complain("INFO");
-	inst.complain("WARNING");
-	inst.complain("ERROR");
-	inst.complain("POTXOLO");
+		harl.complain(argv[1]);
+	}
+	else
+		std::cout << "Usage: ./harl [DEBUG, INFO, WARNING, ERROR]" << std::endl;
 	return (0);
 }

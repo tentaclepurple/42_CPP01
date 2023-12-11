@@ -6,7 +6,7 @@
 /*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 15:01:03 by imontero          #+#    #+#             */
-/*   Updated: 2023/12/11 18:56:26 by imontero         ###   ########.fr       */
+/*   Updated: 2023/12/11 19:06:40 by imontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,36 @@ Harl::~Harl(void)
 void	Harl::complain(std::string level)
 {
 	std::string	lvl[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void		(Harl::*ptrComplain[4])(void) = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
-
-	for (int i = 0; i < 4; i++)
+	int			i = 0;
+	for (i ; i < 4; i++)
 	{
 		if (level == lvl[i])
-		{
-			(this->*ptrComplain[i])();
-			return ;
-		}
+			break ;
 	}
-	std::cout << "Unexpected input" << std::endl;
+	switch (i)
+	{
+		case 0:
+			this->_debug();
+			this->_info();
+			this->_warning();
+			this->_error();
+			break ;
+		case 1:
+			this->_info();
+			this->_warning();
+			this->_error();
+			break ;
+		case 2:
+			this->_warning();
+			this->_error();
+			break ;
+		case 3:
+			this->_error();
+			break ;
+		default:
+			std::cout << "Usage: ./harl [DEBUG, INFO, WARNING, ERROR]" << std::endl;
+			break ;
+	}
 }
 
 void	Harl::_debug(void)
